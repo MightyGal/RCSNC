@@ -1,0 +1,78 @@
+\contentsline {paragraph}{}{3}
+\contentsline {paragraph}{}{3}
+\contentsline {paragraph}{}{3}
+\contentsline {paragraph}{}{3}
+\contentsline {paragraph}{}{3}
+\contentsline {paragraph}{}{3}
+\contentsline {paragraph}{}{3}
+\contentsline {paragraph}{}{4}
+\contentsline {section}{\numberline {1}Introduction}{1}
+\contentsline {paragraph}{}{1}
+\contentsline {paragraph}{}{1}
+\contentsline {section}{\numberline {2}Literature Survey}{2}
+\contentsline {subsection}{\numberline {2.1}Existing System}{2}
+\contentsline {subsection}{\numberline {2.2}Proposed System}{2}
+\contentsline {section}{\numberline {3}Software Requirement Specification}{3}
+\contentsline {paragraph}{}{3}
+\contentsline {subsection}{\numberline {3.1}Introduction}{3}
+\contentsline {subsubsection}{\numberline {3.1.1}Purpose}{3}
+\contentsline {subsubsection}{\numberline {3.1.2}Scope}{3}
+\contentsline {subsection}{\numberline {3.2}Overall Description}{3}
+\contentsline {subsubsection}{\numberline {3.2.1}Product Perspective}{3}
+\contentsline {subsubsection}{\numberline {3.2.2}Operating System Environment}{4}
+\contentsline {subsection}{\numberline {3.3}Functional Requirments}{4}
+\contentsline {subparagraph}{}{4}
+\contentsline {subparagraph}{}{5}
+\contentsline {subsection}{\numberline {3.4}Non-Functional Requirements}{5}
+\contentsline {subsubsection}{\numberline {3.4.1}Software Requirements}{5}
+\contentsline {subsubsection}{\numberline {3.4.2}Hardware Requirements}{5}
+\contentsline {subsubsection}{\numberline {3.4.3}Perfomance Requirement}{6}
+\contentsline {subsubsection}{\numberline {3.4.4}Definition}{6}
+\contentsline {subsubsection}{\numberline {3.4.5}Acronyms}{6}
+\contentsline {section}{\numberline {4}Detailed Design Diagram}{7}
+\contentsline {subsection}{\numberline {4.1}Data flow Diagrams}{7}
+\contentsline {paragraph}{}{7}
+\contentsline {paragraph}{}{7}
+\contentsline {paragraph}{}{8}
+\contentsline {subsection}{\numberline {4.2}Use case Diagram }{14}
+\contentsline {subsection}{\numberline {4.3} Database Table}{16}
+\contentsline {section}{\numberline {5}Implementation}{18}
+\contentsline {paragraph}{}{18}
+\contentsline {subsection}{\numberline {5.1}Introduction}{18}
+\contentsline {paragraph}{}{18}
+\contentsline {subsubsection}{\numberline {5.1.1}NetBeans}{18}
+\contentsline {paragraph}{}{18}
+\contentsline {paragraph}{}{18}
+\contentsline {paragraph}{}{18}
+\contentsline {subsubsection}{\numberline {5.1.2}Eclipse}{19}
+\contentsline {paragraph}{}{19}
+\contentsline {paragraph}{}{19}
+\contentsline {paragraph}{}{19}
+\contentsline {paragraph}{}{19}
+\contentsline {subsubsection}{\numberline {5.1.3}Android}{20}
+\contentsline {subparagraph}{\textbf {Features of Android}}{20}
+\contentsline {paragraph}{}{20}
+\contentsline {subsubsection}{\numberline {5.1.4}GSM}{20}
+\contentsline {paragraph}{}{20}
+\contentsline {paragraph}{}{21}
+\contentsline {paragraph}{}{21}
+\contentsline {paragraph}{}{21}
+\contentsline {subsubsection}{\numberline {5.1.5}Hibernate}{21}
+\contentsline {paragraph}{}{21}
+\contentsline {paragraph}{}{21}
+\contentsline {subparagraph}{\textbf {Advantages}}{22}
+\contentsline {subsection}{\numberline {5.2}Installation Procedure}{22}
+\contentsline {subsection}{\numberline {5.3}Implementation plan}{22}
+\contentsline {paragraph}{}{22}
+\contentsline {paragraph}{}{23}
+\contentsline {paragraph}{}{23}
+\contentsline {paragraph}{}{23}
+\contentsline {paragraph}{}{23}
+\contentsline {section}{\numberline {6}Results}{24}
+\contentsline {section}{\numberline {7}Conclusion}{27}
+\contentsline {paragraph}{}{27}
+\contentsline {paragraph}{}{27}
+\contentsline {paragraph}{}{27}
+\contentsline {paragraph}{}{27}
+\contentsline {paragraph}{}{27}
+\contentsline {section}{\numberline {8}Reference}{28}

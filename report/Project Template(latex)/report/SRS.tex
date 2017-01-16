@@ -1,0 +1,110 @@
+\begin{center}
+\section{Software Requirement Specification}
+\end{center}
+\paragraph{}
+\subsection{Introduction}
+\subsubsection{Purpose}
+The purpose of this document is to present a detailed description on Remote Cellular
+SMS based Network Commander. This software is used to control the working of a
+computer using mobiles. It contains mainly mobile phones and computers. The user can
+send the messages using their respective mobile phones, which is connected to the central
+system. Based on the request send by the user, the server system performs the task on
+their respective client PC's.
+\subsubsection{Scope}
+System described in this document is specifically designed for Remote Cellular SMS
+based Network Commander. Scope of this project is as follows:
+\begin{itemize}
+\item[1]Ability to restart the computer
+\item[2]Ability to shut down the computer
+\item[3]Detect any USB connected
+\item[4]Monitor activities in the system
+\item[5]Notifications from leaders
+\end{itemize}
+\subsection{Overall Description}
+\subsubsection{Product Perspective}
+This product is developed for monitoring the networks. When we have a group of
+computers interconnected, the administration and monitoring all these systems are required. For this purpose we can use one computer called server computer. All remaining
+computers are called client computers and are under the control of server computer. Using server operating systems we can control the privileges of the client user by setting
+client access permissions and other settings specified in the domain. Although we have
+server to monitor the client machines, here we present a new tool using
+which we can monitor and control the client machines very effectively. Remote Cellular
+SMS Commander network tool can control remote PC systems with a mobile phone device through using the SMS message services. There is no so conditions that the mobile
+phone must be the particular type or version. The only condition is, it must support
+SMS inside the devices and can work with the network that provide the services of SMS.
+\subsubsection{Operating System Environment}
+Java Platform, Standard Edition or Java SE is a widely used platform for programming
+in the Java language. It is the Java Platform used to deploy portable applications for
+general use. In practical terms, Java SE consists of a virtual machine, which must be
+used to run Java programs, together with a set of libraries (or "packages") needed to
+allow the use of file systems, networks, graphical interfaces, and so on, from within those
+programs. NetBeans is a free, open-source Integrated Development Environment for
+software developers.The NetBeans Platform is a reusable framework for simplifying the
+development of other desktop applications.
+\subsection{Functional Requirments}
+The system presented in this document mainly consist of two modules, they are server
+module and client module.
+\subparagraph{}
+Server module consists of:
+\begin{itemize}
+\item[1]Connection management module: It is responsible for establishing connection between server and clients.
+\item[2]Client session management module: It is responsible for managing the activities of
+the client, that is it keep track of the client.
+\item[3]Database Connectivity:It is responsible for managing database and handling queries.
+\item[4]User management: Manages the users who are members of the network.
+\item[5]SMS module: Responsible for receiving sms from the client which is in pdu format
+and convert it in to text format.
+\subparagraph{}
+Client module consist of:
+\item[1]Server request process unit: This modules handles the request received to server
+such as login request,application run request etc.
+\item[2]Client authentication module: Responsible for managing the authentication of client
+who logs in.
+\item[3]Client appilcation Module:Client application is always running on the system. This module responsible for viewing and coding of application.
+\item[4]Application management: Manage client  applications.
+\end{itemize}
+\subsection{Non-Functional Requirements}
+   \subsubsection{Software Requirements}
+    \begin{itemize}
+     \item Platform : Windows
+     \item Database : mySQL
+     \item Languages : Java SE, NetBeans IDE
+    \end{itemize}       
+   
+    \subsubsection{Hardware Requirements}
+     \begin{itemize}
+      \item Processor : Pentium III or above.
+      \item Speed : 1.4 GHz.
+      \item Base Memory : 128MB RAM.
+      \item Hard Disk Drive : 40 GB.
+      \item Key Board : ISO/IEC9995 QWERTY Keyboard
+      \item Display Type : VGA/EGA
+      \item Mobile Device : Any Mobile device with inbuilt SMS functionality
+     \end{itemize}
+     \subsubsection{Perfomance Requirement}
+     \begin{itemize}
+     
+     
+     \item Scalability:System should be able add any number of clients.
+     \item Speed:Speed of the system should be responsive, that is response to a particular
+action should be available in short period of time.
+     \item Safety:The data in the database should not be lost, if a needed a backup should be
+made available.
+     \item Security:The system database should not be manipulated by the user.
+     \end{itemize}
+     \subsubsection{Definition}
+     \begin{itemize}
+     
+     
+     \item[1] Administrator: The one who manages the system .
+     \item[2] Server: A computer system which provides services to the client.
+     \item[3] Client: User who are already registered in network and can send sms to the admin pc.
+     \item[4] Database: Collection of client information monitored by administrator.
+     \item[5] Network: Collection of computers which consist of one server and many clients.
+     \end{itemize}
+    \subsubsection{Acronyms}
+    \begin{itemize}
+    \item JFC. A Java toolkit for developing graphical user interface
+    \item JDBC. An API that defnes how a client may access a database
+    \item Java SE 1.6. Java SE is a widely used platform for programming in java language
+    \item NetBeans IDE. NetBeans is a free, open-source Integrated Development Environment for software developers
+     \end{itemize}

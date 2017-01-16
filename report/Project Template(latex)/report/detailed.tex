@@ -1,0 +1,589 @@
+\section{\textbf{\Large Threat Models For Security Testing}}
+
+\end{center}
+TMID is the front-end input language for automated security testing. A TMID specification includes a threat model and a MIM specification. A threat model describes how attacks can be performed against the SUT, whereas a MIM specification maps the elements of a threat model to implementation-level constructs. The former is used to generate security tests and the latter is used to convert them into executable code.
+\subsection{\large Threat Models}
+\textbf{Definition 1 (PrT net)}:
+ A PrT net N is a tuple $P,T,F,I,\Sigma,L,\varphi,M_0$
+\begin{enumerate}
+\item P is a set of places (i.e., predicates), T is a set of
+transitions, F is a set of normal arcs, and I is a set of
+inhibitor arcs.
+\item P is a set of constants, relations (e.g., equal to and
+greater than), and arithmetic operations (e.g., addition
+and subtraction).
+\item L is a labeling function on arcs F U I. L(f) is a label for
+arc f. Each label is a tuple of variables and/or
+constants in P.
+\item $\varphi$ is a guard function on T,$\varphi$(t), t’s guard condition, is
+built from variables and the constants, relations, and
+arithmetic operations in $\Sigma$.
+\item $M_0$ = an initial marking. Each token is a tuple of
+constants in $\Sigma$.
+\end{enumerate}
+The above definition, adapted from our prior work, is a simplified version of traditional PrT nets. This formalism has been applied successfully to threat modeling in a formal method for secure software design. It is also supported by an efficient verification technique. Suppose, each variable starts with a lower case letter or question mark and each constant starts with an upper
+case letter or digit. Places and transitions are represented by circles and rectangles, respectively. An arrow represents a normal arc; a line segment with a small solid diamond on both ends represents an inhibitor arc. Fig. 1 shows an example. Transitions legalAttempt and illegalAttempt have formal parameters (u,p). illegalAttempt also has a guard condition u $\neq$ " "[2].
+\paragraph{}
+Let p be a place and t be a transition. p is called an input (or output) place of t if there is a normal arc from p to t (or from t to p). p is called an inhibitor place if there is an inhibitor arc between p and t. Let ?x/V be a variable
+binding, where ?x is bound to value V . A substitution is a
+set of variable bindings. In substitution (u=ID1;p=PSWD1),u and p are bound to ID1 and PSWD1,
+respectively. Let $\Theta$ be a substitution and l be an arc label. l= $\Theta$
+denotes the tuple (or token) obtained by substituting each
+\begin{enumerate}
+\item Each input place p of t has a token that
+matches l=$\Theta$, where l is the normal arc label from p to t;
+\item Each inhibitor place p of t has no token that matches l=$\Theta$,
+where l is the inhibitor arc label; and
+\item the guard condition of t evaluates to true according to $\Theta$.
+\end{enumerate}
+\begin{figure}
+\centering
+\includegraphics[height=2.5in, width = 5in]{abc.jpg}
+\caption{PrT net for a dictionary attack.}
+\label{fig:1}
+\end{figure}
+\paragraph{}Firing an enabled transition t with substitution $\Theta$ under $M_0$  removes the matching token from each input place and adds new token l = $\Theta$ to each output place, where l is the arc label from t to the output place. This leads to a new marking $M_1$. Firing t$(x1; . . . ; xn)$ with $\Theta $ =(x1=V1; . . . ;xn=Vn ) is denoted by t$\Theta$ or t(V1; . . . ; Vn).$M_0$, t1 $\Theta$1,M1 . . . tn$\Theta$n,Mn, or simply t1$\Theta$1; . . . ; tn$\Theta$n, is called a firing sequence, where $\Theta$ is the substitution for firing ti, and Mi is the marking after ti fires, respectively. A marking M is said to be reachable from $M_0$ if there is such a firing sequence that transforms $M_0$ to M. Note that evaluation of a guard condition for transition firing may involve comparisons, arithmetic operations, and binding of free variables to values. For example, evaluation of z = x+1 where x is bound to two will first compute
+x+1 and then bind z to three. Therefore, a firing sequence
+can imply a sequence of data transformations.
+\paragraph{}
+\textbf{Definition 2 (Threat model or net):} A PrT net $P,T,F,I,\Sigma,L,\varphi,M_0$  is a threat model or net if T has one or more attack transitions (suppose the name of each attack transition starts with “attack”). The firing of an attack transition is a security attack or a significant sign of security vulnerability. The net in Fig. 1 models a dictionary attack against a
+system that allows only n invalid login attempts for authentication. It describes that the adversary tries to makes n + 1 login attempts. p2 holds n invalid (user id; password) pairs and p3 holds one invalid (user id; password) pair.
+Suppose, $$
+M_0=(p_0,p_2(ID1; PSWD1), p2(ID2; PSWD2),$$  
+       $$p2(ID3; PSWD3), p3(IDn + 1,PSWDn+1)
+$$
+Then, the following firing sequence violates the authentication policy of a system that allows only three invalid login
+attempts:
+$$M_0,startLogin; M_1 ; legalAttempt(ID1, PSWD1),M_2,$$
+$$legalAttempt(ID2,PSWD2),M3,legalAttempt(ID3,PSWD3), M_4$$
+$$ illegalAttempt(IDn + 1,PSWDn + 1), M_5, attack, M_6.$$
+\begin{figure}
+\centering
+\includegraphics[height=2.5in, width = 5in]{fig2.jpg}
+\caption{A threat net for SQL injection attacks.}
+\label{fig:2}
+\end{figure}
+\\
+$M_i(1 - 6)$ are the markings after the respective transition
+firings. A firing sequence that ends with the firing of an
+attack transition is called an attack path.
+\paragraph{}
+In a threat net, transitions represent events or actions involved in the attacks, whereas places represent conditions or states. Traditionally, threat modeling involves functional modeling, threat identification and specification, risk evaluation of threats, and threat mitigation. As our focus is on threat models for security testing, we build threat models as follows: 
+\begin{enumerate}
+\item We identify system functions (including assets such as data) and security goals (e.g., confidentiality, integrity, and availability).
+\item For each function, we identify how it can be misused or abused to threaten its security goals. We use the STRIDE threat classification system to elicit security threats in a systematic way.
+\item We create threat nets to represent the threats. In this approach, a
+threat net describes interrelated security threats in terms of system functions and threat types.
+\item We analyze the threat nets through reachability analysis or simulation and
+revise the models if the analysis reports any problems.
+\end{enumerate}
+\paragraph{}Fig. 2a shows a threat net of some SQL injection attacks against the Magento shopping system. These attacks can be done with respect to several functional scenarios, such as “do shopping, login, and check out” (transitions $t_{11}, t_{12}, t_{13})$, “go to login page and retrieve password through ‘Forgot your password’” $(t_{21}, t_{22}, t_{23}),$ “login, do shopping, and check out using coupon code” $(t_{31}, t_{32}, t_{33})$, and “login, do shopping, check out using credit card payment” $(t_31, t_32, t_41, t_42)$. They can lead to different types of security threats, such as information disclosure and data tampering. Place sqlstr
+represents different SQL injection strings that can be used
+to attack these functions. Examples are 'or 1 = 1- -,') or \lq1\rq = ‘1- -, and 1’ or '1 = '1. We denote them as INJECTION1, INJECTION2, and INJECTION3, respectively. The above threat net makes it possible to generate injection attacks
+automatically against the relevant functions.
+\paragraph{}In a threat net, the initial marking (i.e., a distribution of tokens in places) may represent test data, system settings and states (e.g., configuration), and ordering constraints on the transitions. The attack paths in a threat net depend on not only the structure of the net but also the given initial
+marking. Consider an initial marking of the threat net in Fig. 2a: \{p0, sqlstr (INJECTION1), sqlstr (INJECTION2), sqlstr (INJECTION3)\}. sqlstr represents malicious inputs for testing SQL injection attacks. $t_{11}, t_{12}, t_{13}$ is a meaningful attack path only when $t_{13}$ uses a malicious SQL injection input that is provided in place sqlstr. It is not a security test if the input of
+$t_{13}$ is a normal valid input. This is similar for other attack paths. Different attack paths may have the same transitions with different substitutions (i.e., test values) for the transition firings. Thus, test data specified in an initial marking are important for exposing security vulnerabilities. They determine the specific test values that would trigger security failures. In our approach, these test values are created according to tester’s expertise (e.g., SQL injection strings) or
+produced by fuzzing tools that generate random invalid
+values of variables.
+\paragraph{}
+In our approach, a threat net can be verified through reachability analysis of goal markings and reachability analysis of transitions. Reachability analysis is a wellknown approach to formal verification of system properties (e.g., correctness, liveness, and deadlock freedom). Reachability analysis of a goal marking is to check whether or not the given goal marking is reachable in the threat net.
+The given goal marking represents a property to be verified. Suppose $M_0 = \{ f_0, sqlstr(INJECTION1)\}$ for the threat model in Fig. 2a. The markings $p_{12},p_{22},p_{32} and p_3$ must be reachable from $M_0$, respectively. If the reachability analysis reports that any of these states is unreachable from $M_0$, then the specification of the threat model is incorrect and needs to be fixed. Reachability analysis of transitions is to check whether or not all transitions are firable under a
+certain reachable marking in the threat net. Generally, each transition in a threat model should contribute to some attack path (i.e., occur in some firing sequence). If there is a transition that can never be fired, the specified threat net
+would be problematic. Our approach also provides an animator for stepwise simulation of security attacks—user can choose to manually fire one enabled transition at a time or continuously fire randomly selected enabled transitions.
+This can help find out whether the expected attack behaviors are implied in the threat net. Fig. 2b shows the state of the threat net in Fig. 2a after $t_{31}$ and $t_{32}$ have been fired. There are three tokens in sqlstr (i.e., INJECTION1,
+INJECTION2, INJECTION3) and one token in $p_{32}.t_{33}$ and $t_{41}$ (in red) are enabled. Actually, t33 is enabled by three different substitutions: s/INJECTION1, s/INJECTION2, s/INJECTION3. Similarly, firing $t_{41}$ would enable $t_{42}$ by
+three substitutions. Therefore, there are six attack paths
+from $t_{31}$ and $t_{32}$ to the attack transition.
+\subsection{\large Model-Implementation Mapping}
+Let \L be the target language of test code (HTML/
+Selenium or C), $O^{\L}$ be a set of expressions in £, and P $\L$ be a set of code blocks in \L.
+\\
+\textbf{Definition 3 (MIM Specification):} 
+\\ A MIM specification for a
+threat model N = ($P,T,F,I,\Sigma,L,\varphi,M_0$) is a quadruple
+(SID, $f_O$, fPT, $f_H$), where
+\begin{enumerate}
+\item SID is the identity or URL of the SUT.
+\item $f_O$ : P $\Sigma$ : $O^{\L}$ maps constants in P to expressions
+in \L.
+\item fPT : P U T P maps each place and transition in
+P U T to a block of code in \L.
+\item  fH : HEADER : $P^{\L}$ is the header code in \L. It
+will be included in the beginning of a test suite (e.g.,\#include and variable declarations in C).
+\end{enumerate}
+\begin{figure}
+\centering
+\includegraphics[height=2.5in, width = 5in]{table1.jpg}
+\caption{MIM Specification for the Threat Model in Fig. 1.}
+\label{fig:TABLE1}
+\end{figure}
+\paragraph{}
+$f_O$, called object function, maps each constant (object or value) in a token, arc label, or transition firing of the threat net to an expression in the implementation. For example, a login ID in a threat net may be corresponding to an e-mail address in a SUT. fPT , called place/transition mapping function, translates each place or transition into a block of code in the implementation. $f_H$, called helper function, specifies the header code that is needed to make test code executable. Table 1 shows portion of the MIM specification for the threat model in Fig. 1. The SUT is a web application at http://www.example.com/magento. The target language is HTML/Selenium. Each Selenium operation is a triple (command, target, value), i.e., columns 2-4 of those rows with four columns in Table 1. ID1 and PSWD1 from the threat model correspond to test1@gmail.com and aBcDe1, respectively. fPT (p) for place p can be used to set up test conditions or evaluate test oracles. For example, fPT (p4) in Table 1, as a test oracle, verifies whether or not the response from the SUT contains the text “invalid login or password” after the n + 1 login attempt. The presence of this text implies that the SUT has accepted the login attempt. Test oracles (including expected results and comparisons with actual
+results) are important for determining whether security tests pass or fail. In model-based testing, test models and the SUT are often at different levels of abstraction. One approach to dealing with test oracles in model-based testing is to abstract the SUT’s results and compare it to the expected results in model-based tests. This paper takes a different approach— model-level test oracles (tokens in markings of attack paths) can be directly mapped to implementationlevel
+code if they are programmable (like fPT (p4) in Table 1). Of course, it can be hard to specify precise test oracles and automatically compare oracle values to the actual results.
+
+\paragraph{}
+fPT(p0) = fPT(p1) = fPT(p2) = fPT(p3)=$\phi$ (empty) because they are not used to generate test code here. fPT (t) for transition t usually performs one or more operations.\textit{startLogin} is done by clicking on the link \textit{“Log In,”} whereas \textit{legalAttempt} is accomplished by filling in the E-mail and Pass fields and then submitting the request. Note that the Selenium code for fPT (t) does not have to be coded manually. It can be easily obtained by using the record function of Selenium. To get the Selenium code for \textit{login}, for example, we can perform and record the \textit{login} operation. From the recorded script, it is straightforward to find the Selenium code corresponding to \textit{login}. Generally, it is not difficult to build the MIM specification if fPT is programmable. When C is the target language of test code, fPT can be obtained by creating a small number of tests that cover the individual operations and writing the C code to implement these operations. In the above example, fH(HEADERÞ)=$\phi$ as it is not needed.
+\newpage
+\section{\textbf{\Large Automated Security Test Generation}}
+
+This section discusses automated generation of attack paths
+from a threat net and automated generation of test code for
+the attack paths according to the given MIM description. The
+threat net of a TMID specification does not depend on the
+MIM description. Attack paths can be generated from the
+threat net even if the MIM description is not provided.
+\subsection{\large Generating Attack Paths}
+In a threat net, each attack path $M_0,t_1\Theta1, M_1...,tn-1\Theta n-1;
+Mn-1,tn\Theta_n,M_n$(tn is an attack transition) is a security test,
+where,
+\begin{itemize}
+\item $M_0$ is the initial test setting;
+\item t1$\Theta1$,...,tn-1$\Theta$ n-1 are \textbf{test inputs}.
+\item M1,...,Mn-1 are the expected states (test oracles) after $t_i\Theta_i$
+\end{itemize}
+Attack transition tn and its resultant marking $M_n$ represent
+the logical condition and state of the security attack or risk.
+They are not treated as part of the real test because they are
+not physical operations. A security test fails if there is an
+oracle value that evaluates to false. It means that the SUT is
+not threatened by the attack. The successful execution of a
+security test, however, means that the SUT suffers from the
+security attack or risk.
+\paragraph{}
+Our approach can generate all attack paths from a given threat net. To do so, we first generate the reachability graph of the threat net (refer to lines 2-14 of Algorithm 1 below). The reachability graph represents all states (markings) and
+state transitions reachable from the initial marking. The root
+node of the reachability graph represents the initial marking.
+Construction of the reachability graph starts with expanding
+the root node[3]. When a node is expanded, all possible transition firings (all substitutions for each transition) under the current marking are computed (as described in Section 2.1) and a child node is created for each possible firing.
+The child node will also be expanded unless:
+\begin{enumerate}
+\item It results from the firing of the attack transition \textit{Or} 
+\item The current marking has expanded before.
+\end{enumerate}
+\newpage
+\textbf{Algorithm 1}. Generate security tests from a threat net
+\\Input: Threat net ($P,T,F,I,\Sigma,L,\varphi,M_0$)
+\\Output: attackPaths - the list of all attack paths
+\\Declare: root, newNode, currentNode are nodes;
+\\ \textit{queue} is a queue of nodes;
+\\ \textit{substitutions (t, currentNode)} are all substitutions that make t firable under currentNode.marking;
+\\ \textit{leafNodes} is a list of leaf nodes;
+\\ \textit{attackPath(leaf)} is the attack path from the root to the leaf;
+\\ \textit{needToRepeatLeafNodeExpansion} is a Boolean variable,
+initialized to true;
+
+\begin{enumerate}
+\item begin
+\item root node for the initial marking
+\item queue [root]
+\item while queue not equal to $\phi$  do
+\item currentNode first node in queue;
+\item for each transition t $\epsilon$ T, do
+\item for each $\Theta \epsilon$ substitutions(t, currentNode), do
+\item create newNode as a child of currentNode according to currentNode, t, and $\Theta$
+\item if t is not an attack transition, newNode.marking has not occurred before and enables one or more transitions
+\item add newNode to queue for expansion;
+\item end if
+\item end for
+\item end for
+\item end while
+\item while needToRepeatLeafNodeExpansion
+\item needToRepeatLeafNodeExpansion false
+\item leafNodes all leaf nodes
+\item for each leaf $\epsilon$ leafNodes such that leaf.transition is
+not attack transition, leaf.marking has enabled
+transitions, and leaf.marking has not occurred in the
+path to the root
+\item nonleafWithSameState find the non-leaf node
+which has the same marking as leaf
+\item if nonleafWithSameState exists and its
+descendants contain attack transitions
+\item add a copy of all its descendants to leaf
+\item needToRepeatLeafNodeExpansion := true;
+\item end if
+\item end for
+\item end while
+\item leafNodes all leaf nodes
+\item for each leaf $\epsilon$ leafNodes
+\item if leaf is not an attack transition
+\item remove leaf and the path to the root
+\item end if
+\item end for
+\item attackPaths := $\phi$
+\item leafNodes all leaf nodes
+\item for each leaf := leafNodes
+\item add attackPath(leaf) to attackPaths
+\item end for
+\item end
+\end{enumerate}
+Second, we transform the reachability graph to a
+transition tree that contains complete attack paths[3]. This is
+done by repeatedly expanding the leaf nodes that are
+involved in attack paths but not resulted from firings of
+attack transitions (lines 15-25, initially needToRepeatLeafNodeExpansion= true). Once the expansion starts, needToRepeatLeafNodeExpansion is set to false (line 16), assuming that the expansion will not be repeated unless it is needed. Note
+that different attack paths in a threat net can lead to the same marking. For termination purposes, the generation of reachability graph (lines 2-14) does not expand the same marking more than once. For different attack paths leading
+to the same marking, some of them will not end with attack transitions in the reachability graph. Specifically, if a leaf node does not result from the firing of an attack transition but its marking enables some transitions (line 18), then the
+marking must have been expended before—there exists a nonleaf node that contains the same marking. The leaf node would be in attack paths if this nonleaf node with the same marking contains attack transitions in its descendants.
+\\Therefore, we first find such a nonleaf node (line 19) and, if
+its descendants contain attack transitions, a copy of the
+descendants is attached to the leaf (line 21). In this case,
+the leaf nodes copied from the descendants may also need
+to be expanded. needToRepeatLeafNodeExpansion is set to true
+so that there will be another round of leaf node expansion.
+To avoid duplicate expansion of leaf nodes in attack paths,
+an additional constraint is added to the condition for leaf
+node expansion: the marking of the leaf node has not
+occurred in the path from the leaf node to the root (line 18)[3].
+\paragraph{}
+Third, we remove the leaf nodes that do not represent
+attack paths (lines 26-31 of Algorithm 1). This is because our
+focus is on security testing. As a result, each leaf node in the
+final transition tree implies the firing of an attack transition
+and each path from the root to a leaf is an attack path.
+Finally, we generate attack paths by collecting all leaf nodes
+and, for each leaf, retrieving the attack path from the root to
+the leaf (lines 32-36). In our current approach, each attack
+path ends with one attack transition—no node of firing an
+attack transition is expanded[3]. For a composite attack that is
+composed of a sequence of attacks, we may specify only one
+attack transition in the attack path when building the threat
+net. For example, (t1, attack1, tj, attack2,. . ., tk, attackn)
+can be replaced with (t1,. . .,tj. . ., tk, attack).
+
+\paragraph{}
+\begin{figure}
+\centering
+\includegraphics[height=3in, width = 5in]{fig3.jpg}
+\caption{Attack paths generated from the net in Fig. 2a.}
+\label{fig:figure 3}
+\end{figure}
+Fig. 3 shows all the attack paths generated from the threat model in Fig. 2a. The initial marking is \{p0, sqlstr (INJECTION1), sqlstr (INJECTION2), sqlstr (INJECTION3)\}. There are 12 attack paths—the threat net involves four functional
+scenarios (i.e., login, retrieval of password, coupon code, and
+credit card payment) that can be affected by SQL injection and any of the three SQL injection strings can be used for the attack. Obviously, manual creation and maintenance of such attack paths would be tedious and error prone.
+\paragraph{}
+The time and space complexity of Algorithm 1 is
+exponential in the size of the threat net, including number
+of transitions and number of tokens. This is due to the
+construction of the reachability graph that computes all
+possible substitutions for transition firings under each
+reachable marking (lines 2-14). Our approach assumes that
+the number of markings reachable from the initial state is
+finite so that Algorithm 1 will terminate with a finite number
+of attack paths. If the threat net has an infinite number of
+reachable markings (e.g., due to an endless loop), Algorithm 1
+will not terminate (in practice, it will run out of memory).
+When PrT nets are used for system modeling, they often have
+very large state space. The threat nets in this paper, however,
+only capture particular behaviors of security threats (e.g.,
+using a small subset of operations and inputs).
+\paragraph{}
+Traversal of the model space (e.g., in the form of a graph)
+is often part of the test generation process in model-based
+testing. From this perspective, many model-based test
+generation techniques bear some similarity. Nevertheless,
+Algorithm 1 is developed specifically for generating attack
+paths from threat nets. It is different from the traditional
+graph traversal algorithms for model-based testing in
+two aspects:
+\begin{enumerate}
+\item The reachability graph of the given PrT net
+is generated (lines 2-14) according to the semantics of
+transition firings. Generating firing
+sequences involves finding all variable substitutions and
+performing comparisons and arithmetic operations defined
+in guard conditions. For simplicity, this is represented by one
+function call substitutions (t, currentNode), though. In other
+words, firing sequences imply data flows and data transformations.
+\item Algorithm 1 aims at finding all attack
+paths, which end with firing of attack transitions. Firing
+sequences that are incomplete attack paths in the reachability
+graph need to be made complete (lines 15-25) in that the
+reachability graph does not expand the same marking more
+than once. Firing sequences that are not attack paths in
+the reachability graph need to be pruned (lines 26-31).
+\end{enumerate}  
+\section{\large 3.2 Generating Test Code}
+Recall that, for each attack path $$M_0,t_1\Theta1, M_1...,tn-1\Theta n-1;
+Mn-1,tn\Theta_n,M_n$$where, tn is an attack transition, $M_0$ is the initial test setting, t1$\Theta1$,...,tn-1$\Theta$ n-1 are test inputs, M1,...,Mn-1 are the expected states (test oracles) after $t_i\Theta_i$.Such an attack path can be
+converted into executable code when the complete MIM specification for the threat net is provided. Specifically, we can generate the initialization (setup) code for $M_0$, test input code for $t_i\Theta_i$, and test oracle code for$M_i$. Algorithm 2 below describes how the test suite in HTML/Selenium is generated from the given
+list of attack paths according to the MIM specification. The test suite consists of a header (line 2) and a hyperlink to each test (line 16). Each test consists of calling the setup code (line 8) obtained through lines 3-6, the test inputs (lines 10-11), and the test oracles (lines 12-14). Note that the actual parameters of token p(X1; . . .;Xm) and transition firing t(Y1; . . . ; Ym) need to be mapped to the objects in the target language according to fO (lines 5, 11, and 13). After the test suite file is opened with Selenium, the tests can be executed automatically.
+\paragraph{} \textbf{Algorithm 2.} Generate test code in HTML/Selenium
+\\Input: attackPaths - a list of attack paths;
+\\MIM - (SID, fo, fPT, fH)
+\\Output: testSuite - test code (HTML file)
+\\Declare:setup is the initialization code for $M_0$
+\\test: HTML file for one test
+\begin{enumerate}
+\item begin
+\item testSuite := fH(HEADER);
+\item setup := “”;
+\item for each p(X1; . . .;Xm) $\epsilon$ $M_0$
+\item append fPT(p($f_O$(X1), . . . ; $f_O$(Xm))) to setup
+\item end for
+\item for each attackPath $M_0$; t1$\Theta$ 1,M1, . . . , tn-1$\Theta$n-1, Mn-1, tn$\Theta$n,$M_n$ $\epsilon$ attackPaths
+test setup
+\item for (i = 1 to n-1) do
+\item let $t_i\Theta_i$ = t(Y1, . . . , Ym)
+\item append fTP (t($f_O$(Y1), . . . , $f_o$)Ym))) to test
+\item for each p(X1; . . .;Xm) $\epsilon$ Mi
+\item fPT (p($f_O$(X1), . . . , $f_o$(Xm))) to test
+\item end for
+\item end for
+\item append a hyperlink to testSuite for test
+\item end for
+\item end
+\end{enumerate}
+\begin{figure}
+\centering
+\includegraphics[height=2.5in, width = 5in]{table2.jpg}
+\caption{Sample HTML/Selenium Test Code}
+\label{fig:TABLE2}
+\end{figure}
+
+Table 2 shows the HTML/Selenium test code generated
+for the following attack path that violates an authentication
+policy:
+$$
+M0,startLogin,M1,legalAttempt(ID1,PSWD1Þ),M2,$$
+$$legalAttemptðID2,PSWD2Þ,M3,legalAttempt(ID3, PSWD3),$$
+$$M4,illegalAttempt(IDn+1,PSWDn+1),M5, attack,M6;
+$$
+where
+$$M_0 = \{ p0, p2(ID1,PSWD1),p2(ID2,PSWD2),$$$$p2(ID3,PSWD3),p3(IDn+1,PSWDn+1)\}$$
+$M_0$ yields no test code because fPT($p_0$)=fPT($p_1$)=fPT($p_2$)=fPT($p_3$)=$\phi$ according to the MIM specification in Table 1. Similarly, M1,M2,M3, and M4 produce no code. M5 = \{fp4\} yields the code in row 15 of Table 2 according to fPT(p4) in
+Table 1. In Table 2, row 1 is the code for startLogin. Rows 2-4 are for legalAttempt(ID1, PSWD1). Similarly, rows 5-7 and 8-10 are for legal Attempt(ID2, PSWD2) and legalAttempt (ID3, PSWD3), respectively. Rows 11-14 are for $$illegalAttempt(IDn+1,PSWDn+1).$$
+\paragraph{}
+Generation of test code in C is similar to Algorithm 2[1].
+The following are the main differences: each test is defined
+as a function, the main function issues one call to each test,
+the test suite file consists of the header, the setup function,
+the functions for all tests, and the main function. As such,
+Algorithm 2 can be adapted as follows: lines 3-6 create the
+setup function, line 8 calls the setup function; lines 9-15
+create a function for each test; line 16 appends a test call to
+the main function.
+\newpage
+\section{\textbf{\Large Implementation in real time systems}}
+
+\paragraph*{}
+A mutant is said to be killed or the vulnerability is detected if
+one of the security tests is a successful attack, i.e., all the input
+actions of this test are completed and all the oracles of this
+test evaluate to true[1]. If the execution of a test fails, then it is
+not a successful attack no matter whether the test oracles are
+implemented in the test code or not. When the test oracles
+are precisely implemented in the test code, the complete
+execution of the test code (without failure or exception)
+would imply a successful attack. If the test oracles are not
+automated (e.g., for a denial-of-service attack), we describe
+the expected result of a successful attack, observe and
+document the actual result of test execution, and compare the
+actual result to the expected result. If the test oracles are
+partially implemented and the test execution fails, then
+the test is not a successful attack. However, the complete
+execution of a test whose oracles are only partially
+implemented does not always indicate a successful attack.
+The actual result of the test may need to be further inspected.
+Generally, our manual analysis focuses on those tests that are
+executed without failure or exception.
+\paragraph*{}
+Applying this approach includes identifying, building, and verifying threat
+models, creating MIM descriptions to complete TMID specifications if feasible (e.g., if attack actions are programmable), generating test code, and executing the test code against the SUT. Security goals such as confidentiality,
+authentication, authorization, integrity, and availability are
+used in both studies. As mentioned in Section 2, threats are
+elicited by examining possible STRIDE threats to all functions
+(e.g., use case scenarios) and security goals resulted
+from first step[1]. Note that a threat can belong to multiple STRIDE
+categories. For example, an elevation of privilege attack may
+lead to information disclosure and tampering.
+\paragraph*{}
+We create mutants by injecting vulnerabilities
+into systems functions or services according to the potential
+security problems with the subject applications and
+common vulnerabilities (e.g., SQL injection, XSS, buffer
+overflow, and memory leak). Vulnerabilities can be classified
+into design-level and implementation-level vulnerabilities.
+A design-level vulnerability is one that results from a
+design defect. For example, input validation only on the
+client side, not on the server side, in a web application is a
+design defect—it is vulnerable no matter how well the
+client-side input validation is implemented. Implementation-
+level vulnerabilities are due to programming errors,
+e.g., use of insecure data structures and functions. For
+example, using an array to realize a list of objects in C can
+be an implementation-level vulnerability if it suffers from
+buffer overflow. To create mutants, we locate the code for
+the functions under investigation, review the code to
+determine the types of vulnerabilities, and change the code
+to inject vulnerabilities. Mutant creation is done manually
+because all the vulnerabilities are injected based on the
+program semantics. This is different from the existing
+mutation testing research, which creates mutants through
+syntactic changes. Existing mutation testing approaches
+do not meet our need for evaluating vulnerability detection
+capability because they do not create mutants with different
+types of security vulnerabilities. After a mutant is created,
+we examine it to see if it has the same behavior as any other
+mutant. For example, commenting all code of a function has
+the same effect as commenting all calls to the function.
+Given a group of mutants that have the same behavior, only
+one of them will further be used. In addition, we apply a
+few static code analyzer/scanners to all the mutants
+although our work focuses on testing for security, not static
+analysis for security. The vulnerabilities not revealed by
+static code analyzers/scanners but detected by security
+testing can reflect the testing effectiveness.
+\subsection{\large Magneto}
+Magento3 is a web-based online shopping system. It was
+chosen in this study for several reasons. First, it is an open
+source project being used by many live websites. The opensource
+nature makes it convenient to perform mutation
+analysis.Based on the use of Magento and
+review of its source code, 32 services, such as managing account, adding products to cart, removing items from cart, updating cart, and making
+payments have been identified and described.
+\paragraph*{}
+The threat modeling for Magento has revealed various
+ways of potential attacks. They are specified by 19 PrT nets
+(TMID files). Usually, one threat net involves multiple threat
+types. Figure 6 shows the metrics of the security tests
+generated from the threat nets. ST is the number of security
+tests (attack paths) generated from each threat net. FA is the
+number of tests (including inputs and oracles) that are fully
+automated without user interaction. PA is the number of
+tests that are partially automated (the test code is generated
+automatically but its execution needs some user interaction).
+ST-FA-PA is the number of tests performed manually. S, T, R,
+I, D, andE refer to the number of tests for the respective threat
+type.
+\paragraph*{} The threat nets yield a total of 103 unique security tests,
+87 of them are generated and executed automatically, 11 are
+partially automated, and only five need to be performed
+manually. The record function of Selenium IDE is very useful
+for creating MIM specifications. When we run Magento
+through a particular scenario, the HTML code for individual
+actions and conditions in the scenario can be easily obtained
+in the recorded script. This provides the mapping from the
+individual actions and conditions to their HTML code in
+relevant MIM specifications. Test operations that are difficult
+to automate include setting up the testing environment (e.g.,
+creation of accounts and inventory), modifying and uploading
+generated HTML pages (e.g., for a tampering attack),
+gaining the session cookie of a user, verifying the states of
+successful attacks. The criteria of success for some attacks
+(i.e., oracles of security tests) can be difficult to formalize and
+verify. For example, a denial-of-service attack is performed on the client side. It is not easy to automatically determine whether or not this attack is successful on the client side. Even though the server does not respond as expected, it may be
+caused by a network connection problem, not by this attack.
+The effect of a successful denial-of-service attack would
+better be verified on the server side.
+\begin{figure}
+\centering
+\includegraphics[height=3.9in, width = 5in]{magneto.jpg}
+\caption{Security Tests in the Magento Study}
+\label{fig:figure 6}
+\end{figure}
+\paragraph*{}
+When the security tests are applied to testing Magento
+version 1.1.8, two are successful. They reflect two vulnerabilities
+in the login and password retrieval functions of the
+Admin panel. Because the HTML tags in the e-mail and
+password fields are not filtered properly, malicious Java-
+Script code can be injected and executed. Users can be
+tricked to view webpages, triggering the execution of the
+malicious code. Scripts can also be constructed to attack
+other sites. These problems have been fixed in the current
+Magento version.
+\subsection*{\large FileZilla Server}
+File Transfer Protocol is a widely used method for working
+with remote computer systems and moving files between
+systems. FileZilla Server6 is a popular FTP server implementation.
+As of December 2010, it is the seventh most
+downloaded program on SourceForge[4].
+\paragraph*{}
+According to the full FTP specification in the Request for
+Comments (RFC) published by the Internet Engineering
+Task Force (IETF), FTP operations include login, connect,
+change directory, list directory, get current directory,
+change to passive mode, put file to server, get file from
+server, create directory, delete directory, delete a file,
+execute commands on server (EXEC), SITE (execution of
+site/server specific commands), rename a file, append a file,
+system (return system type), and quit. FileZilla Server also
+provides an administration service[4].
+\paragraph*{}
+The security threats are identified by examining each
+type of STRIDE threats to the FTP operations. They are
+specified in eight threat nets:
+\begin{enumerate}
+\item Spoofing using login, change dir, passive mode, put
+file, and get file;
+\item Tampering using login, change directory, passive
+mode, put file, get file, create dir, delete dir, delete
+file, and rename;
+\item Repudiation attacks using login, change dir, passive
+mode, put file, get file, delete dir, delete file, SITE,
+EXEC;
+\item Information disclosure using login, connect, change
+dir, list, passive mode, and get file;
+\item Denial of service on all commands except list, get
+working dir, get file, SITE cmds, and append;
+\item Denial of service using such commands as XMKD
+(creating a subdirectory), ALLO (allocating the
+specified amount of disk space for a file), PASV
+(instructs the server to send back a specially crafted
+data stream), EPSV (extension of PASV), RNTO/
+RNFR (rename from/to);
+\item Elevation of privilege using all cmds except chg dir,
+get working dir and quit; and
+\item Elevation of privilege threats using other commands.
+\end{enumerate}
+\begin{figure}
+\centering
+\includegraphics[height=3in, width = 5in]{filez.jpg}
+\caption{Security Tests in the FileZilla Server Study}
+\label{Fig:Figure 7}
+\end{figure}
+Each of the threat nets also involves other threat types, as
+shown in Figure 7. The threat models result in a total of 76
+unique attacks. Code for programmable individual attack
+actions and conditions in the threat nets is written in C. It is
+then used to create the MIM descriptions and then generate
+test code for the security tests. Security tests are performed as
+FTP clients. Figure 7 shows that 55 of the tests are executed
+without user interaction. Seventeen of the tests are partially
+automated because user interactions are needed at the
+beginning and end of test execution every time they are
+executed. The remaining four tests need to be performed manually according to the
+generated test sequences because they are not programmable.
+The security tests are all executed against FileZilla
+Server version 0.9.34[4]. Four of them are successful attacks of
+tampering, information disclosure, and denial of service.
+These attacks are allowed to create a directory without
+permission, read a file without permission, and deny service
+to a user.
+\newpage
+\section*{\textbf{\Large 5.Threats to Validity}}
+\paragraph*{}
+There are several threats to validity in this approach.
+\begin{itemize}
+\item Security threats are identified by applying STRIDE to all
+system functions. Although STRIDE is a widely used
+classification system for threat modeling and our threat
+models have provided a good coverage of threat types and
+system functions, the threat models may not represent all
+potential security attacks. 
+\item Security mutants are created systematically based on the common vulnerabilities in C/C++ and web applications[1]. Nevertheless, they are by
+no means exhaustive. As artificially created mutants, they
+may not represent the vulnerabilities in real-world software
+development. 
+\item The findings about test automation
+and testing effectiveness from the case studies can be
+limited to systems with similar functions and security
+concerns.
+\item Although different researchers created the
+TMID specifications and security mutants independently,
+they are from the same project team. The evaluation of the
+security testing approach in terms of its vulnerability
+detection ability can be biased.
+\end{itemize}

@@ -1,0 +1,612 @@
+This is pdfTeX, Version 3.1415926-1.40.11 (MiKTeX 2.9) (preloaded format=pdflatex 2013.7.17)  19 APR 2014 13:41
+entering extended mode
+**template.tex
+("E:\sem, prjct\main project\Project Template(latex)\template.tex"
+LaTeX2e <2009/09/24>
+Babel <v3.8l> and hyphenation patterns for english, afrikaans, ancientgreek, ar
+abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
+croatian, czech, danish, dutch, esperanto, estonian, farsi, finnish, french, ga
+lician, german, german-x-2009-06-19, greek, gujarati, hindi, hungarian, iceland
+ic, indonesian, interlingua, irish, italian, kannada, kurmanji, lao, latin, lat
+vian, lithuanian, malayalam, marathi, mongolian, mongolianlmc, monogreek, ngerm
+an, ngerman-x-2009-06-19, nynorsk, oriya, panjabi, pinyin, polish, portuguese, 
+romanian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, swis
+sgerman, tamil, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, u
+senglishmax, welsh, loaded.
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\article.cls"
+Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\size12.clo"
+File: size12.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\trig.sty"
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
+File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
+)
+Package graphics Info: Driver file: pdftex.def on input line 91.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def"
+File: pdftex.def 2011/04/25 v0.06b Graphics/color for pdfTeX
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/message (HO)
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
+Package: ltxcmds 2011/04/18 v1.20 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count87
+))
+\Gin@req@height=\dimen103
+\Gin@req@width=\dimen104
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\geometry\geometry.sty"
+Package: geometry 2010/09/12 v5.6 Page Geometry
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.sty"
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is detected.
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifvtex.sty"
+Package: ifvtex 2010/03/01 v1.5 Switches for detecting VTeX and its modes (HO)
+Package ifvtex Info: VTeX not detected.
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.sty"
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+\Gm@cnth=\count88
+\Gm@cntv=\count89
+\c@Gm@tempcnt=\count90
+\Gm@bindingoffset=\dimen105
+\Gm@wd@mp=\dimen106
+\Gm@odd@mp=\dimen107
+\Gm@even@mp=\dimen108
+\Gm@layoutwidth=\dimen109
+\Gm@layoutheight=\dimen110
+\Gm@layouthoffset=\dimen111
+\Gm@layoutvoffset=\dimen112
+\Gm@dimlist=\toks15
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\geometry\geometry.cfg"))
+("E:\sem, prjct\main project\Project Template(latex)\fancyhdr.sty"
+\headwidth=\dimen113
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\alltt.sty"
+Package: alltt 1997/06/16 v2.0g defines alltt environment
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\ams\math\amsmath.sty"
+Package: amsmath 2000/07/18 v2.13 AMS math features
+\@mathmargin=\skip43
+
+For additional information on amsmath, use the `?' option.
+("C:\Program Files\MiKTeX 2.9\tex\latex\ams\math\amstext.sty"
+Package: amstext 2000/06/29 v2.01
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\ams\math\amsgen.sty"
+File: amsgen.sty 1999/11/30 v2.0
+\@emptytoks=\toks16
+\ex@=\dimen114
+))
+("C:\Program Files\MiKTeX 2.9\tex\latex\ams\math\amsbsy.sty"
+Package: amsbsy 1999/11/29 v1.2d
+\pmbraise@=\dimen115
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\ams\math\amsopn.sty"
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count91
+LaTeX Info: Redefining \frac on input line 211.
+\uproot@=\count92
+\leftroot@=\count93
+LaTeX Info: Redefining \overline on input line 307.
+\classnum@=\count94
+\DOTSCASE@=\count95
+LaTeX Info: Redefining \ldots on input line 379.
+LaTeX Info: Redefining \dots on input line 382.
+LaTeX Info: Redefining \cdots on input line 467.
+\Mathstrutbox@=\box26
+\strutbox@=\box27
+\big@size=\dimen116
+LaTeX Font Info:    Redeclaring font encoding OML on input line 567.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
+\macc@depth=\count96
+\c@MaxMatrixCols=\count97
+\dotsspace@=\muskip10
+\c@parentequation=\count98
+\dspbrk@lvl=\count99
+\tag@help=\toks17
+\row@=\count100
+\column@=\count101
+\maxfields@=\count102
+\andhelp@=\toks18
+\eqnshift@=\dimen117
+\alignsep@=\dimen118
+\tagshift@=\dimen119
+\tagwidth@=\dimen120
+\totwidth@=\dimen121
+\lineht@=\dimen122
+\@envbody=\toks19
+\multlinegap=\skip44
+\multlinetaggap=\skip45
+\mathdisplay@stack=\toks20
+LaTeX Info: Redefining \[ on input line 2666.
+LaTeX Info: Redefining \] on input line 2667.
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\color.sty"
+Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\color.cfg"
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package color Info: Driver file: pdftex.def on input line 130.
+)
+("E:\sem, prjct\main project\Project Template(latex)\setspace.sty"
+Package: setspace 2000/12/01 6.7 Contributed and Supported LaTeX2e package
+
+Package: `setspace' 6.7 <2000/12/01>
+) ("C:\Program Files\MiKTeX 2.9\tex\latex\tools\enumerate.sty"
+Package: enumerate 1999/03/05 v3.00 enumerate extensions (DPC)
+\@enLab=\toks21
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\float\float.sty"
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count103
+\float@exts=\toks22
+\float@box=\box28
+\@float@everytoks=\toks23
+\@floatcapt=\box29
+)
+
+LaTeX Warning: Unused global option(s):
+    [a4sizepaper].
+
+("E:\sem, prjct\main project\Project Template(latex)\template.aux"
+("E:\sem, prjct\main project\Project Template(latex)\report/certificate.aux")
+("E:\sem, prjct\main project\Project Template(latex)\report/acknowledgement.aux
+") ("E:\sem, prjct\main project\Project Template(latex)\report/abstract.aux")
+("E:\sem, prjct\main project\Project Template(latex)\report/contents.aux")
+("E:\sem, prjct\main project\Project Template(latex)\report/introduction.aux")
+("E:\sem, prjct\main project\Project Template(latex)\report/SRS.aux")
+("E:\sem, prjct\main project\Project Template(latex)\report/DDD.aux"
+
+LaTeX Warning: Label `fig:1' multiply defined.
+
+
+LaTeX Warning: Label `fig:1' multiply defined.
+
+
+LaTeX Warning: Label `fig:1' multiply defined.
+
+
+LaTeX Warning: Label `fig:1' multiply defined.
+
+
+LaTeX Warning: Label `fig:1' multiply defined.
+
+
+LaTeX Warning: Label `fig:1' multiply defined.
+
+
+LaTeX Warning: Label `fig:1' multiply defined.
+
+) ("E:\sem, prjct\main project\Project Template(latex)\report/implementation.au
+x") ("E:\sem, prjct\main project\Project Template(latex)\report/results.aux"
+
+LaTeX Warning: Label `fig:1' multiply defined.
+
+
+LaTeX Warning: Label `fig:1' multiply defined.
+
+
+LaTeX Warning: Label `fig:1' multiply defined.
+
+) ("E:\sem, prjct\main project\Project Template(latex)\report/conclusion.aux")
+("E:\sem, prjct\main project\Project Template(latex)\report/references.aux"))
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: <default>
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(86.72377pt, 469.75502pt, 57.81621pt)
+* v-part:(T,H,B)=(83.11005pt, 625.13617pt, 86.72377pt)
+* \paperwidth=614.295pt
+* \paperheight=794.96999pt
+* \textwidth=469.75502pt
+* \textheight=625.13617pt
+* \oddsidemargin=14.45378pt
+* \evensidemargin=14.45378pt
+* \topmargin=-26.15994pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=12.0pt
+* \footskip=30.0pt
+* \marginparwidth=44.0pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+<emblem1.png, id=1, 105.39375pt x 104.39pt>
+File: emblem1.png Graphic file (type png)
+ <use emblem1.png>
+Package pdftex.def Info: emblem1.png used on input line 46.
+(pdftex.def)             Requested size: 71.13287pt x 71.13556pt.
+ [1
+
+{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map} <E:/sem, prjct/main projec
+t/Project Template(latex)/emblem1.png (PNG copy)>]
+("E:\sem, prjct\main project\Project Template(latex)\report/certificate.tex"
+File: emblem1.png Graphic file (type png)
+
+<use emblem1.png>
+Package pdftex.def Info: emblem1.png used on input line 7.
+(pdftex.def)             Requested size: 71.13287pt x 71.13556pt.
+) [2
+
+]
+("E:\sem, prjct\main project\Project Template(latex)\report/acknowledgement.tex
+") [3
+
+
+] ("E:\sem, prjct\main project\Project Template(latex)\report/abstract.tex") [4
+
+
+] ("E:\sem, prjct\main project\Project Template(latex)\report/contents.tex" ("E
+:\sem, prjct\main project\Project Template(latex)\template.toc" [5
+
+
+])
+\tf@toc=\write3
+
+[6] ("E:\sem, prjct\main project\Project Template(latex)\template.lof")
+\tf@lof=\write4
+
+("E:\sem, prjct\main project\Project Template(latex)\template.lot")
+\tf@lot=\write5
+) [7]
+("E:\sem, prjct\main project\Project Template(latex)\report/introduction.tex"
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+
+[1
+
+
+])
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+
+[2] ("E:\sem, prjct\main project\Project Template(latex)\report/SRS.tex"
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+
+[3
+
+
+]
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+
+[4]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 68.
+ ("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 68.
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+
+[5])
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+
+[6] ("E:\sem, prjct\main project\Project Template(latex)\report/DDD.tex"
+<sym.jpg, id=52, 398.99063pt x 197.23688pt>
+File: sym.jpg Graphic file (type jpg)
+ <use sym.jpg>
+Package pdftex.def Info: sym.jpg used on input line 11.
+(pdftex.def)             Requested size: 216.80937pt x 216.81073pt.
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+
+[7
+
+
+ <E:/sem, prjct/main project/Project Template(latex)/sym.jpg>]
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+
+[8] <DFD0.jpg, id=59, 539.1342pt x 357.0138pt>
+File: DFD0.jpg Graphic file (type jpg)
+ <use DFD0.jpg>
+Package pdftex.def Info: DFD0.jpg used on input line 29.
+(pdftex.def)             Requested size: 361.34967pt x 361.36008pt.
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+
+[9 <E:/sem, prjct/main project/Project Template(latex)/DFD0.jpg>]
+<pic1.jpg, id=63, 438.8897pt x 357.58594pt>
+File: pic1.jpg Graphic file (type jpg)
+ <use pic1.jpg>
+Package pdftex.def Info: pic1.jpg used on input line 36.
+(pdftex.def)             Requested size: 361.3585pt x 361.37173pt.
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+
+[10 <E:/sem, prjct/main project/Project Template(latex)/pic1.jpg>]
+<pict.jpg, id=67, 526.21594pt x 464.4853pt>
+File: pict.jpg Graphic file (type jpg)
+ <use pict.jpg>
+Package pdftex.def Info: pict.jpg used on input line 43.
+(pdftex.def)             Requested size: 361.36307pt x 361.36154pt.
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+
+[11 <E:/sem, prjct/main project/Project Template(latex)/pict.jpg>]
+<pic3.jpg, id=71, 436.63126pt x 380.92313pt>
+File: pic3.jpg Graphic file (type jpg)
+ <use pic3.jpg>
+Package pdftex.def Info: pic3.jpg used on input line 50.
+(pdftex.def)             Requested size: 361.35118pt x 361.3634pt.
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+
+[12 <E:/sem, prjct/main project/Project Template(latex)/pic3.jpg>]
+<pic4.jpg, id=76, 391.4625pt x 392.96812pt>
+File: pic4.jpg Graphic file (type jpg)
+ <use pic4.jpg>
+Package pdftex.def Info: pic4.jpg used on input line 57.
+(pdftex.def)             Requested size: 361.3684pt x 361.37315pt.
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+
+[13 <E:/sem, prjct/main project/Project Template(latex)/pic4.jpg>]
+<U2.jpg, id=80, 523.2348pt x 472.6458pt>
+File: U2.jpg Graphic file (type jpg)
+ <use U2.jpg>
+Package pdftex.def Info: U2.jpg used on input line 66.
+(pdftex.def)             Requested size: 433.6301pt x 433.63501pt.
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+
+[14 <E:/sem, prjct/main project/Project Template(latex)/U2.jpg>]
+<u.jpg, id=84, 521.7894pt x 507.3354pt>
+File: u.jpg Graphic file (type jpg)
+ <use u.jpg>
+Package pdftex.def Info: u.jpg used on input line 73.
+(pdftex.def)             Requested size: 361.34877pt x 505.90974pt.
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+
+[15 <E:/sem, prjct/main project/Project Template(latex)/u.jpg>]
+Missing character: There is no â in font cmr12!
+Missing character: There is no € in font cmr12!
+Missing character: There is no ¢ in font cmr12!
+Missing character: There is no â in font cmr12!
+Missing character: There is no € in font cmr12!
+Missing character: There is no ¢ in font cmr12!
+Missing character: There is no â in font cmr12!
+Missing character: There is no € in font cmr12!
+Missing character: There is no ¢ in font cmr12!
+Missing character: There is no â in font cmr12!
+Missing character: There is no € in font cmr12!
+Missing character: There is no ¢ in font cmr12!
+Missing character: There is no â in font cmr12!
+Missing character: There is no € in font cmr12!
+Missing character: There is no ¢ in font cmr12!
+Missing character: There is no â in font cmr12!
+Missing character: There is no € in font cmr12!
+Missing character: There is no ¢ in font cmr12!
+Missing character: There is no â in font cmr12!
+Missing character: There is no € in font cmr12!
+Missing character: There is no ¢ in font cmr12!
+Missing character: There is no â in font cmr12!
+Missing character: There is no € in font cmr12!
+Missing character: There is no ¢ in font cmr12!
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+
+[16]
+Missing character: There is no â in font cmr12!
+Missing character: There is no € in font cmr12!
+Missing character: There is no ¢ in font cmr12!
+Missing character: There is no â in font cmr12!
+Missing character: There is no € in font cmr12!
+Missing character: There is no ¢ in font cmr12!
+Missing character: There is no â in font cmr12!
+Missing character: There is no € in font cmr12!
+Missing character: There is no ¢ in font cmr12!
+Missing character: There is no â in font cmr12!
+Missing character: There is no € in font cmr12!
+Missing character: There is no ¢ in font cmr12!
+Missing character: There is no â in font cmr12!
+Missing character: There is no € in font cmr12!
+Missing character: There is no ¢ in font cmr12!
+Missing character: There is no â in font cmr12!
+Missing character: There is no € in font cmr12!
+Missing character: There is no ¢ in font cmr12!
+Missing character: There is no â in font cmr12!
+Missing character: There is no € in font cmr12!
+Missing character: There is no ¢ in font cmr12!
+)
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+
+[17]
+("E:\sem, prjct\main project\Project Template(latex)\report/implementation.tex"
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no › in font cmr12!
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+
+[18
+
+
+]
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+
+[19]
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+
+[20]
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+
+[21]
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+
+[22])
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+
+[23] ("E:\sem, prjct\main project\Project Template(latex)\report/results.tex"
+<first.jpg, id=113, 361.35pt x 271.0125pt>
+File: first.jpg Graphic file (type jpg)
+ <use first.jpg>
+Package pdftex.def Info: first.jpg used on input line 15.
+(pdftex.def)             Requested size: 289.0804pt x 289.0914pt.
+
+<second.jpg, id=114, 361.35pt x 271.0125pt>
+File: second.jpg Graphic file (type jpg)
+ <use second.jpg>
+Package pdftex.def Info: second.jpg used on input line 22.
+(pdftex.def)             Requested size: 361.35463pt x 361.36426pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<le.jpg, id=115, 1029.8475pt x 579.66562pt>
+File: le.jpg Graphic file (type jpg)
+ <use le.jpg>
+Package pdftex.def Info: le.jpg used on input line 31.
+(pdftex.def)             Requested size: 361.34773pt x 361.35255pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+)
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+
+[24
+
+
+ <E:/sem, prjct/main project/Project Template(latex)/first.jpg>]
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+
+[25 <E:/sem, prjct/main project/Project Template(latex)/second.jpg>]
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+
+[26 <E:/sem, prjct/main project/Project Template(latex)/le.jpg>]
+("E:\sem, prjct\main project\Project Template(latex)\report/conclusion.tex")
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+
+[27
+
+
+] ("E:\sem, prjct\main project\Project Template(latex)\report/references.tex")
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+
+[28
+
+
+] ("E:\sem, prjct\main project\Project Template(latex)\template.aux"
+("E:\sem, prjct\main project\Project Template(latex)\report/certificate.aux")
+("E:\sem, prjct\main project\Project Template(latex)\report/acknowledgement.aux
+") ("E:\sem, prjct\main project\Project Template(latex)\report/abstract.aux")
+("E:\sem, prjct\main project\Project Template(latex)\report/contents.aux")
+("E:\sem, prjct\main project\Project Template(latex)\report/introduction.aux")
+("E:\sem, prjct\main project\Project Template(latex)\report/SRS.aux")
+("E:\sem, prjct\main project\Project Template(latex)\report/DDD.aux")
+("E:\sem, prjct\main project\Project Template(latex)\report/implementation.aux"
+) ("E:\sem, prjct\main project\Project Template(latex)\report/results.aux")
+("E:\sem, prjct\main project\Project Template(latex)\report/conclusion.aux")
+("E:\sem, prjct\main project\Project Template(latex)\report/references.aux"))
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 2382 strings out of 494053
+ 35160 string characters out of 3148606
+ 98965 words of memory out of 3000000
+ 5556 multiletter control sequences out of 15000+200000
+ 11939 words of font info for 42 fonts, out of 3000000 for 9000
+ 715 hyphenation exceptions out of 8191
+ 28i,12n,40p,1147b,333s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Pr
+ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbxti10.pfb><C:/Program 
+Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiK
+TeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/f
+onts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/typ
+e1/public/amsfonts/cm/cmti10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publi
+c/amsfonts/cm/cmti12.pfb>
+Output written on template.pdf (35 pages, 836059 bytes).
+PDF statistics:
+ 155 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 61 words of extra memory for PDF output out of 10000 (max. 10000000)
+

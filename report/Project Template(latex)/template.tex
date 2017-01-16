@@ -1,0 +1,125 @@
+
+\documentclass[a4size paper,12pt]{article}
+\usepackage{graphicx}
+\usepackage[top=1.15in, bottom=1.2in, left=1.2in, right=.8in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{alltt}
+\usepackage{amsmath}
+\usepackage{color}
+\usepackage{setspace}
+\usepackage{enumerate}
+%\usepackage[noadjust]{cite}
+%\usepackage{secdot}
+%\usepackage{tocloft}
+\usepackage{float}
+\renewcommand{\headrulewidth}{0pt}
+%\renewcommand\cftfigfont{\normalfont}
+
+    \let \savenumberline \numberline
+     \def \numberline#1{\savenumberline{#1.}}
+
+\begin{document}
+\onehalfspacing
+
+%---------------------------------------------------Styling for first 3 pages.
+\begin{center}
+\large
+
+\hfill
+
+
+\begingroup
+{\LARGE\textbf{REMOTE CELLULAR SMS NETWORK COMMANDER }} \\ % Thesis title
+\endgroup
+\begingroup
+{\large \textit{ \textbf{Main Project Report}\linebreak submitted in partial fulfillment of the award of the degree\linebreak of\linebreak} \textbf{Bachelor of Technology}\linebreak
+\textit{in}\linebreak \textbf{Computer Science and Engineering} \linebreak
+\textit{of}\linebreak Cochin University of Science and Technology}\vspace{.5cm} \\ \bigskip
+{\large{Under the guidance of\linebreak \textbf{MERLIN ABRAHAM\linebreak
+}}}
+\endgroup
+\begingroup
+\bigskip
+{\large \linebreak MILY WILSON\linebreak ANJALI HAREENDRAN \linebreak MANJU M S\linebreak NEETHU NINAN}
+\endgroup
+\vfill
+\includegraphics[height=2.5cm,width=2.5cm]{emblem1.png} \\ \bigskip % Picture
+\vfill
+
+\bigskip {\large \textbf{APRIL 2014} \medskip \\ {Department of Computer Engineering}\linebreak {College of Engineering, Chengannur 689121}\linebreak {Phone: (0479) 2454125, 2451424 Fax: (0479) 2451424}}
+
+
+\end{center}
+\pagestyle{empty}
+\newpage
+
+
+\pagestyle{empty}
+\include{report/certificate}
+\newpage
+%-------------------------------------.--------------------------
+
+
+%: ----------------------- acknowledgement ----------------------
+
+\include{report/acknowledgement}
+\newpage
+
+
+%: ----------------------- abstract-----------------------------
+\include{report/abstract}
+\newpage
+%: ----------------------- contents ----------------------------
+
+\cfoot{}
+\include{report/contents}
+
+%: ----------------------- contents------------------------------
+
+%: ----------------------- listoffigures ------------------------
+%\include{report/list}
+
+%: ---------------------listoffigures--------------------------
+\newpage
+\definecolor{hfcolor}{gray}{.40}
+\pagestyle{fancy}
+\rfoot{\textcolor{hfcolor}{\fancyplain{}{\small \thepage}}}
+\lhead{\textcolor{hfcolor}{\textit{\small Remote Cellular SMS Network Commander}}}
+\rhead{\textcolor{hfcolor}{\textit{\small B.Tech Main Project Report}}}
+\lfoot{\textcolor{hfcolor}{\textit{\small College of Engineering, Chengannur}}}
+\cfoot{}
+\headsep=.4in
+\footskip=.4
+in
+
+%: -----------------------introduction--------------------------
+
+\pagenumbering{arabic}
+\setcounter{page}{1}
+\include{report/introduction}
+\newpage
+
+
+
+\include{report/SRS}
+\newpage
+
+\include{report/DDD}
+\newpage
+
+\include{report/implementation}
+\newpage
+\include{report/results}
+\newpage
+%: ----------------------- detailed description------------------
+
+%: ----------------------- conclusion------------------
+\include{report/conclusion}
+\newpage
+%: ----------------------- conclusion------------------
+
+%:--------------------------reference-----------------------------
+\include{report/references}
+\newpage
+%:--------------------------reference-----------------------------
+\end{document}

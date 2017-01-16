@@ -1,0 +1,1 @@
+com.clientmonitoringserver.util.HibernateUtil
